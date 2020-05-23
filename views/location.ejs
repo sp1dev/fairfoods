@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+    <title><%= single_location.locName %> | Fair Foods</title>
+</head>
+<body>
+    <div class="container jumbotron">
+        <div>
+            <h1>Fair Foods at <%= single_location.locName %></h1>
+            <br>
+            <p>Pick up your fresh produce on: <%= single_location.pickupTime %>.</p>
+            <p>Each bag costs $2. Learn more about <a href="http://www.fairfoods.org/index.php?page=food_rescue.htm" target="_blank">Fair Foods here</a>.</p>
+        </div>
+    </div>
+    <div class="container">
+        <p>Please place your order by filling in the form below.</p>
+        <form action="/order" method="POST">
+            <label for="fname">First name:</label>
+            <input type="text" name="fname" id="fname">
+    
+            <label for="lname">Last name:</label>
+            <input type="text" name="lname" id="lname">
+    
+            <br><br>
+            <label for="pickup-date">Pickup date: </label>
+            <input type="date" name="pickup-date" id="pickup-date">
+    
+            <label for="bags">Number of bags:</label>
+            <select name="num-of-bags" id="num-of-bags">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            
+            <br><br>
+            <label for="loc-name">Location:</label>
+            <input type="text" name="loc-name" id="loc-name" value="<%= single_location.locName %>" disabled>
+            <br><br>
+            <input type="submit" name="submit-order" id="submit-order">
+        </form>
+    
+        <br>
+        <div>
+            <% if(order_message === "success") { %>
+            <p class="alert-success"><%= order_obj.fname %>, your order for <%= order_obj.num_of_bags %> bag(s) has been
+                accepted. Please pick up on <%= order_obj.pickup_date %>.</p>
+    
+            <% } else if (order_message === "fail") { %>
+            <p class="alert-danger">Order not processed. Please try again. </p>
+            <% } else { %>
+            <p></p>
+            <% } %>
+        </div>
+        <a href="/allorders">View All Orders</a>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>

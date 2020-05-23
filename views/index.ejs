@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>Fair Foods at Lena Park</title>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="container jumbotron">
+            <div>
+                <div class="display-flex">
+                    <h1>Fair Foods</h1>
+                    <img src="images/FairFoods.jpg" alt="Fair Foods line outside of Lena Park">
+                </div>
+                <br>
+                <p>Fair Foods is a non-profit food rescue organization dedicated to providing surplus goods at low or no cost to
+                    those in
+                    need. Since 1988 we have rescued and delivered millions of pounds of fresh produce and quality building
+                    supplies to low
+                    income communities throughout New England and around the world.Learn more about <a
+                        href="http://www.fairfoods.org/index.php?page=food_rescue.htm" target="_blank">Fair Foods here</a>.</p>
+                <p>To reserve a bag, please choose a location below.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <% all_locations.forEach( (single_location) => { %>
+            <a href="/view/<%= single_location.locName%>"><%= single_location.locName %></a>
+            <br><br>
+            <% }) %>
+        </div>
+
+
+        
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

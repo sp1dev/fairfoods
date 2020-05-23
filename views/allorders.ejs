@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partials/head.ejs') %>
+    <title>All Orders | Fair Foods</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>All Fair Food Orders</h1>
+        <a href="/">Back home</a>
+        <br>
+        <table class="table thead-light table-striped table-hover">
+            <thead class=thead-light>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Pickup date</th>
+                    <th>Location</th>
+                    <th>No. of bags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% all_orders.forEach( (single_order) => { %>
+                <tr>
+                    <td><%= single_order.fname %> </td>
+                    <td><%= single_order.lname %> </td>
+                    <td><%= single_order.pickup_date %> </td>
+                    <td><%= single_order.loc_name %> </td>
+                    <td class="bag-col"><%= single_order.num_of_bags %> </td>
+                </tr>
+                <% }); %>
+                <tr>
+                    <td colspan=4>Total</td>
+                    <td class="bagTotal"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <%- include('partials/footer.ejs') %>
+
+    <script>
+        let bagColAry = document.querySelectorAll('.bag-col');
+        let bagSum = 0;
+        for (let i = 0; i < bagColAry.length; i++) {
+            bagSum += parseInt(bagColAry[i].innerText);
+        }
+
+        document.querySelector('.bagTotal').innerText = bagSum;
+    </script>
+</body>
+
+</html>

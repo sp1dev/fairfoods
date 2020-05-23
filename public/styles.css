@@ -1,0 +1,34 @@
+img {
+    max-width: 17em;
+}
+
+.display-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.jumbotron {
+    max-width: 70%;
+    /* background-image: url("images/fruit.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron > div {
+    background-color: rgba(122, green, blue, 0.6)
+}
+table {
+    border: 1px solid #e5e5e6;
+}
+
+table .bagTotal {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.footer img {
+    margin-top: 5em;
+    max-width: 5em;
+}
